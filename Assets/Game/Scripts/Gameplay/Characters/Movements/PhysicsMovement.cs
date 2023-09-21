@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using Extensions;
+using Providers;
 using UnityEngine;
 
 namespace Characters.Movements
@@ -21,6 +22,7 @@ namespace Characters.Movements
 		private Vector3   _moveVector;
 		private Tween     _slowDownTween;
 		private Vector3   _input;
+		private Camera _camera;
 
 		private readonly int _speed = Animator.StringToHash("Speed");
 
@@ -30,6 +32,9 @@ namespace Characters.Movements
 		public override bool IsStopped => _input == Vector3.zero;
 
 		private void Awake() => _cachedTransform = transform;
+
+		private void Start() => _camera = CameraProvider.MainCamera;
+
 		public override void Move(Vector3 input, Action OnEndPath = null) => _input = input;
 		public override void Warp(Vector3 position) => _character.Body.position = position;
 
@@ -74,15 +79,19 @@ namespace Characters.Movements
 
 		private void CheckForRotate()
 		{
-			if (CurrentVelocity.XZOnly().sqrMagnitude > 0.01f) Rotate();
+			Rotate();
 		}
 
 		private void Rotate()
 		{
-			var targetAngle = Vector3.SignedAngle(Vector3.forward, CurrentVelocity, Vector3.up);
-			var angle = Mathf.SmoothDampAngle(_cachedTransform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
-																				TurnSmoothTime);
-			_cachedTransform.rotation = Quaternion.Euler(0, angle, 0);
+			//TODO make rotate for phone
+			
+			Ray mouseRay = _camera.ScreenPointToRay(Input.mousePosition);
+			Plane plane = new Plane( Vector3.up, _cachedTransform.position );
+			if( plane.Raycast( mouseRay, out float hitDist) ){
+				Vector3 hitPoint = mouseRay.GetPoint( hitDist );
+				_cachedTransform.LookAt( hitPoint );
+			}
 		}
 
 		private void Animate()
