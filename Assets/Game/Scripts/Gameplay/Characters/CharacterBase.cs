@@ -88,12 +88,12 @@ namespace Characters
 
 		private void OnFarZoneEnter(Collider other)
 		{
-			if (other.transform.TryGetComponent<IDamageable>(out var target)) AddTarget(target);
+			//if (other.transform.TryGetComponent<IDamageable>(out var target)) AddTarget(target);
 		}
 
 		private void OnFarZoneExit(Collider other)
 		{
-			if (other.transform.TryGetComponent<IDamageable>(out var target)) RemoveTarget(target);
+			//if (other.transform.TryGetComponent<IDamageable>(out var target)) RemoveTarget(target);
 		}
 
 		protected virtual void AddTarget(IDamageable target)
