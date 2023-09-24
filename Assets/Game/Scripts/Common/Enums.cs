@@ -28,7 +28,9 @@
         public enum ParticleType
         {
             None = 0,
-            Trail = 1
+            Trail = 1,
+            PistolFire = 2,
+            
         }
     }
 }

@@ -150,9 +150,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 3025253685502251171}
+  _gunEnd: {fileID: 6228851111272497651}
   _data: {fileID: 11400000, guid: 452a2f6de92492b46b829969cc4f65d5, type: 2}
 --- !u!4 &6131598396228528598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+  m_PrefabInstance: {fileID: 8765283969878055736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6228851111272497651 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3446898867569695435, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
   m_PrefabInstance: {fileID: 8765283969878055736}
   m_PrefabAsset: {fileID: 0}

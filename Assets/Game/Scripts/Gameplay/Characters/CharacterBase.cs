@@ -7,13 +7,12 @@ using Characters.Movements;
 using Damageable;
 using Sirenix.OdinInspector;
 using UnityEngine;
-
+using Weapons;
 using static Common.Enums;
 
 namespace Characters
 {
-	public class CharacterBase : MonoBehaviour, IDamageable
-
+	public class CharacterBase : MonoBehaviour, IDamageable 
 	{
 		public event Action<IDamageable> OnDie;
 
@@ -24,12 +23,13 @@ namespace Characters
 		[SerializeField] protected Health _health;
 		[SerializeField] protected InteractionZone _farZone;
 		[SerializeField] protected Transform _shotPosition;
+		[SerializeField] protected List<Weapon> _weapons;
 
 		[SerializeField, AssetList] private CharacterData _characterData;
 
 		private Coroutine _attackRoutine;
 
-		//protected Weapon CurrentWeapon;
+		protected Weapon CurrentWeapon;
 		protected readonly List<IDamageable> _attackList = new List<IDamageable>();
 
 		public bool IsDead => _health != default && _health.IsEmpty;
@@ -47,6 +47,7 @@ namespace Characters
 			InitZones();
 			InitHealth();
 			InitMovement();
+			InitWeapon();
 		}
 
 		protected virtual void OnEnable() => Subscribe();
@@ -60,6 +61,11 @@ namespace Characters
 		private void InitZones() => _farZone.Init(Data.FarZoneRadius);
 
 		private void InitHealth() => _health.Init(Data.MaxHealth);
+
+		private void InitWeapon()
+		{
+			if (_weapons.Count > 0) CurrentWeapon = _weapons[0];
+		}
 
 		private void InitMovement()
 		{
@@ -153,6 +159,11 @@ namespace Characters
 		{
 			_attackRoutine.Stop(this);
 			_attackRoutine = null;
+		}
+
+		protected virtual void Fire(Vector3 shotEndPosition)
+		{
+			
 		}
 
 		#endregion

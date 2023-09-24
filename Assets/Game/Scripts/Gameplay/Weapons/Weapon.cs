@@ -1,14 +1,18 @@
-﻿using Extensions;
+﻿using Common.ObjectPool;
+using Extensions;
 using Game.ScriptrableObjects.Classes.Weapons;
+using Providers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static Common.Enums;
 
 namespace Weapons
 {
     public class Weapon : MonoBehaviour
     {
         [SerializeField, GroupComponent] private MeshRenderer _meshRenderer;
+        [SerializeField, GroupComponent] private Transform _gunEnd;
         [SerializeField, AssetList, OnValueChanged(nameof(UpdateWeapon)), GroupSetting] protected WeaponData _data;
         public WeaponData Data => _data;
 
@@ -21,6 +25,12 @@ namespace Weapons
 
         public virtual void Fire(Vector3 targetPosition)
         {
+            var bulletPosition = _gunEnd.position;
+            var bulletDirection = targetPosition - bulletPosition;
+            var bullet = Pool.Get(PrefabProvider.GetBulletPrefab(Data.BulletType), bulletPosition);
+            bullet.Init(bulletDirection, Data.BulletSpeed, Data.Damage, Data.Team);
+            //Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.PistolFire), _gunEnd.position)
+                //.With(x => x.transform.rotation = _gunEnd.rotation);
         }
 
         private void UpdateWeapon()

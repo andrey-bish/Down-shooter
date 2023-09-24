@@ -23,7 +23,6 @@ namespace Weapons.Bullets
         [GroupView] protected int          _damage;
         [GroupView] protected PooledParticle _trail;
         [GroupView] private bool _isHit;
-        [GroupView] protected bool _isBoost;
 
         public Rigidbody Rigidbody
         {
@@ -31,15 +30,14 @@ namespace Weapons.Bullets
             protected set => _rigidbody = value;
         }
 
-        public virtual void Init(Vector3 direction, float speed, int damage, TeamType team, bool isBoost)
+        public virtual void Init(Vector3 direction, float speed, int damage, TeamType team)
         {
             _direction = direction;
             _speed = speed;
             _damage = damage;
             _team = team;
-            _isBoost = isBoost;
             transform.LookAt(transform.position + direction);
-            if(_trail) _trail.SetTrailColor(_isBoost ? _gradientBoost : _gradient, _isBoost ? _gradientBoostSmoke : _gradientSmoke);
+            //if(_trail) _trail.SetTrailColor(_isBoost ? _gradientBoost : _gradient, _isBoost ? _gradientBoostSmoke : _gradientSmoke);
         }
 
         public override void Retain(int id, string containerName)
@@ -57,22 +55,23 @@ namespace Weapons.Bullets
 
         public override void Release(bool disableObject = true)
         {
-            _trail.SetParent(Pool.GetContainer(_trail.ID));
-            _trail.ReleaseAfter(_trailReleaseDelay);
+            // _trail.SetParent(Pool.GetContainer(_trail.ID));
+            // _trail.ReleaseAfter(_trailReleaseDelay);
             base.Release(disableObject);
         }
 
         protected virtual void FixedUpdate()
         {
-            _rigidbody.MovePosition(_rigidbody.position + _direction.normalized * _speed);
+            //_rigidbody.MovePosition(_rigidbody.position + _direction.normalized * _speed);
+            _rigidbody.MovePosition(transform.position + _direction * _speed * Time.deltaTime);
         }
 
         private void SetTrail()
         {
-            var prefab = PrefabProvider.GetParticlePrefab(_trailType);
-            _trail = Pool.Get(prefab, transform.position, transform);
-            _trail.SetTrailColor(_isBoost ? _gradientBoost : _gradient, _isBoost ? _gradientBoostSmoke : _gradientSmoke);
-            _trail.StopRelease();
+            // var prefab = PrefabProvider.GetParticlePrefab(_trailType);
+            // _trail = Pool.Get(prefab, transform.position, transform);
+            // _trail.SetTrailColor(_gradient, _gradientSmoke);
+            // _trail.StopRelease();
         }
         
         protected virtual void OnTriggerEnter(Collider collider)
