@@ -10,10 +10,6 @@ namespace Weapons.Bullets
     public class Bullet : PoolItem
     {
         [SerializeField, GroupComponent] private Rigidbody _rigidbody;
-        [SerializeField, GroupComponent] protected Gradient _gradient;
-        [SerializeField, GroupComponent] protected Gradient _gradientBoost;
-        [SerializeField, GroupComponent] protected Gradient _gradientSmoke;
-        [SerializeField, GroupComponent] protected Gradient _gradientBoostSmoke;
         [SerializeField, GroupSetting] protected ParticleType _trailType = ParticleType.Trail;
         [SerializeField, GroupSetting] protected float _trailReleaseDelay;
 
@@ -37,7 +33,6 @@ namespace Weapons.Bullets
             _damage = damage;
             _team = team;
             transform.LookAt(transform.position + _direction);
-            //if(_trail) _trail.SetTrailColor(_isBoost ? _gradientBoost : _gradient, _isBoost ? _gradientBoostSmoke : _gradientSmoke);
         }
 
         public override void Retain(int id, string containerName)
@@ -62,7 +57,6 @@ namespace Weapons.Bullets
 
         protected virtual void FixedUpdate()
         {
-            //_rigidbody.MovePosition(_rigidbody.position + _direction.normalized * _speed);
             _rigidbody.MovePosition(transform.position + _direction * _speed * Time.deltaTime);
         }
 
@@ -70,7 +64,6 @@ namespace Weapons.Bullets
         {
             // var prefab = PrefabProvider.GetParticlePrefab(_trailType);
             // _trail = Pool.Get(prefab, transform.position, transform);
-            // _trail.SetTrailColor(_gradient, _gradientSmoke);
             // _trail.StopRelease();
         }
         

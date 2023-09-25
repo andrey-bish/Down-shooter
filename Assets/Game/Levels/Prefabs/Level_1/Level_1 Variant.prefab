@@ -121,6 +121,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557684996410000362, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470603979039994597, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470603979039994597, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470603979478505151, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.511
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470603979478505151, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.253
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174126375657726116, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7353668199164227667, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -173,6 +197,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 9ef3075cd2ad7fc469701bb8dfb061a0, type: 2}
+    - target: {fileID: 8121408455249366193, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121408455249366193, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
 --- !u!4 &5626827497381331055 stripped

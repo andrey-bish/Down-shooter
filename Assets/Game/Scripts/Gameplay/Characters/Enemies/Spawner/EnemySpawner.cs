@@ -8,6 +8,7 @@ using Damageable;
 using Extensions;
 using Providers;
 using UnityEngine;
+using Utils;
 using static Common.Enums;
 
 namespace Characters.Enemies.Spawner
@@ -22,19 +23,23 @@ namespace Characters.Enemies.Spawner
         private WaitForSeconds _wait;
         private RandomNoRepeat _randomNoRepeat = new();
         private Transform _playerTransform;
-
+        private Camera _camera;
+        
         private int _countSpawner = 0;
+        private float _defaultWaitTime;
         
         private bool _isTurnOffSpawn;
 
         public EnemySpawner(List<EnemySpawnPoint> enemySpawnPoints, Transform playerTransform, float defaultWaitTime, bool isTurnOffSpawn)
         {
+            _camera = CameraProvider.MainCamera;
+            
             _enemySpawnPoints = enemySpawnPoints;
             _randomNoRepeat.Init(_enemySpawnPoints.Count);
 
             _playerTransform = playerTransform;
-            
-            _wait = new WaitForSeconds(defaultWaitTime);
+
+            _defaultWaitTime = defaultWaitTime;
             _isTurnOffSpawn = isTurnOffSpawn;
         }
         
@@ -71,6 +76,11 @@ namespace Characters.Enemies.Spawner
                 EnemySpawnPoint spawnPoint = null;
                 spawnPoint = GetSpawnPoint();
                 if (spawnPoint == null) continue;
+                yield return null;
+                
+                //проверка на нахождение спавн поинта в камере 
+                var cameraFrustum = GeometryUtility.CalculateFrustumPlanes(_camera);
+                if (GeometryUtility.TestPlanesAABB(cameraFrustum, spawnPoint.Bounds)) continue;
                 
                 _countSpawner++;
                 
@@ -93,7 +103,7 @@ namespace Characters.Enemies.Spawner
                 //     }
                 //     _countSpawnUnits = 0;
                 // }
-                yield return _wait;
+                yield return Helper.GetWait(_defaultWaitTime);
 
             }
         }

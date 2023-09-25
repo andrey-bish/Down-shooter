@@ -57,16 +57,14 @@ namespace Characters
 
 
 		#region Init
-
-		public virtual void Init(CharacterData data) => _characterData = data;
-
+		
 		private void InitZones() => _farZone.Init(Data.FarZoneRadius);
 
 		protected void InitHealth() => _health.Init(Data.MaxHealth);
 
 		private void InitWeapon()
 		{
-			if (_weapons.Count > 0) CurrentWeapon = _weapons[1];
+			if (_weapons.Count > 0) CurrentWeapon = _weapons[0];
 		}
 
 		private void InitMovement()
@@ -89,7 +87,7 @@ namespace Characters
 		}
 
 		#endregion
-		
+
 		public void Move(Vector3 input) => _movement.Move(input);
 		
 		#region Attack

@@ -45,7 +45,7 @@ namespace Weapons
             //_meshFilter.sharedMesh = _data.Mesh;
         }
 
-        protected void SpawnBullet()
+        protected virtual void SpawnBullet()
         {
             var bulletPosition = _gunEnd.position;
             var bulletDirection = (bulletPosition - transform.position).normalized;

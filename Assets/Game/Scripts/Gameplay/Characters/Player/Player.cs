@@ -12,13 +12,13 @@ namespace Characters.Player
     {
         [GroupView] private FireBase _fireLogic;
 
+        private int _weaponCount = 0;
+        
         private void Awake()
         {
 #if UNITY_ANDROID || UNITY_IOS
-            //добавить скрипт стрельбы на мобилку
             _fireLogic = transform.AddComponent<MobileFire>();
 #else
-            //добавить скрипт стрельбы на пк
             _fireLogic = transform.AddComponent<PcFire>();
 #endif
             _fireLogic.OnFire += Fire;
@@ -52,10 +52,20 @@ namespace Characters.Player
             
         }
 
-        public override void TakeDamage(float value)
+        public void UpgradeWeapon()
         {
-            Debug.Log($"TakeDamage {_health.CurrentHealth} {value}");
-            base.TakeDamage(value);
+            _weapons[_weaponCount].Deactivate();
+            _weaponCount++;
+            _weapons[_weaponCount].Activate();
+            CurrentWeapon = _weapons[_weaponCount];
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                UpgradeWeapon();
+            }
         }
     }
 }
