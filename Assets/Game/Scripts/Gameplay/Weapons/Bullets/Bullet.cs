@@ -36,7 +36,7 @@ namespace Weapons.Bullets
             _speed = speed;
             _damage = damage;
             _team = team;
-            transform.LookAt(transform.position + direction);
+            transform.LookAt(transform.position + _direction);
             //if(_trail) _trail.SetTrailColor(_isBoost ? _gradientBoost : _gradient, _isBoost ? _gradientBoostSmoke : _gradientSmoke);
         }
 
