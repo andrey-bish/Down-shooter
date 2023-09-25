@@ -30,6 +30,16 @@
             None = 0,
             Trail = 1,
             PistolFire = 2,
+            RippleFire = 3,
+            ShotgunFire = 4,
+            Explosion = 5,
+            Poof = 6,
+        }
+        
+        public enum EnemyType
+        {
+            None = 0,
+            SimpleEnemy = 1,
             
         }
     }

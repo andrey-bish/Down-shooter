@@ -37,6 +37,14 @@ namespace Characters.Movements
 			}
 		}
 
+		public override void Move(Transform moveTarget)
+		{
+			if (_agent.enabled && _agent.isOnNavMesh)
+			{
+				_agent.SetDestination(moveTarget.position);
+			}
+		}
+
 		private IEnumerator MoveToPoint(Action OnEndPath)
 		{
 			while (true)

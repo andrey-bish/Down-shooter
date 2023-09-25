@@ -80,7 +80,7 @@ namespace Weapons.Bullets
             {
                 if(_isHit) return;
                 if (target.Team == _team) return;
-                target.TakeDamage(_damage, transform.position);
+                target.TakeDamage(_damage);
                 _isHit = true;
                 Release();
             }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Extensions;
 using Data.Characters;
 using Characters.Movements;
+using Common.ObjectPool;
 using Damageable;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,7 +13,8 @@ using static Common.Enums;
 
 namespace Characters
 {
-	public class CharacterBase : MonoBehaviour, IDamageable 
+	[SelectionBase]
+	public class CharacterBase : PoolItem, IDamageable 
 	{
 		public event Action<IDamageable> OnDie;
 
@@ -60,7 +62,7 @@ namespace Characters
 
 		private void InitZones() => _farZone.Init(Data.FarZoneRadius);
 
-		private void InitHealth() => _health.Init(Data.MaxHealth);
+		protected void InitHealth() => _health.Init(Data.MaxHealth);
 
 		private void InitWeapon()
 		{
@@ -168,7 +170,7 @@ namespace Characters
 
 		#endregion
 
-		public void TakeDamage(float value)
+		public virtual void TakeDamage(float value)
 		{
 			if (IsDead) return;
 

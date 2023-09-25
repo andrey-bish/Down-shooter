@@ -6,6 +6,7 @@ namespace Characters.Movements
     public abstract class MovementBehaviour : MonoBehaviour
     {
         public abstract void Move(Vector3 input, Action OnEndPath = null);
+        public abstract void Move(Transform moveTarget);
         public abstract void Warp(Vector3 input);
         public bool IsMoving { get; protected set; }
         public virtual bool IsStopped => !IsMoving;

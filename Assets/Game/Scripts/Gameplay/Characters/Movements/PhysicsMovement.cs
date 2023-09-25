@@ -36,6 +36,8 @@ namespace Characters.Movements
 		private void Start() => _camera = CameraProvider.MainCamera;
 
 		public override void Move(Vector3 input, Action OnEndPath = null) => _input = input;
+		public override void Move(Transform moveTarget) => _input = moveTarget.position;
+
 		public override void Warp(Vector3 position) => _character.Body.position = position;
 
 		public override void Disable()

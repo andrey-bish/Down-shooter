@@ -1,4 +1,5 @@
 ﻿using System;
+using Characters.Enemies.Units;
 using Common.ObjectPool;
 using ScriptrableObjects.Prefabs;
 using Sirenix.OdinInspector;
@@ -32,6 +33,16 @@ namespace Providers
             
         
             return Instance._prefabData.BulletPrefabs[type];
+        }
+
+        public static EnemyUnitElement GetEnemyPrefab(EnemyType type)
+        {
+            foreach (var element in Instance._prefabData.EnemyUnitPrefabs)
+            {
+                if (element.Type == type) return element;
+            }
+
+            throw new NullReferenceException($"Check Enemy Prefab Data {type}");
         }
     }
 }

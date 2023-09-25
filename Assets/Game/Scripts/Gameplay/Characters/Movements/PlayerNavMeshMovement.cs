@@ -26,6 +26,8 @@ namespace Characters.Movements
             _input = input;
         }
 
+        public override void Move(Transform moveTarget) => _input = moveTarget.position;
+
         public override void Warp(Vector3 input)
         {
             _agent.Warp(input);

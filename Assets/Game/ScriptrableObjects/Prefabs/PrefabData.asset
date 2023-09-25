@@ -86,3 +86,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  _enemyUnitPrefabs:
+  - _type: 1
+    _prefab: {fileID: 513302956, guid: c16a78fcec404e94485e783628d6af4b, type: 3}
+    _data: {fileID: 11400000, guid: 925cf6733ef22f140b6b2cfd2b142d25, type: 2}
