@@ -30,7 +30,6 @@ namespace Weapons
 
         public virtual void Fire(Vector3 targetPosition)
         {
-            //if (_isDelay) return;
             _isDelay = true;
             StartCoroutine(ShotDelay());
         }

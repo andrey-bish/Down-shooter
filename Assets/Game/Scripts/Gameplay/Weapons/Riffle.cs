@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using Common.ObjectPool;
-using Providers;
 using UnityEngine;
 using Utils;
 

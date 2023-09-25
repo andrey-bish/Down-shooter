@@ -1,6 +1,4 @@
-﻿using Common.ObjectPool;
-using Providers;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Weapons
 {
@@ -9,7 +7,6 @@ namespace Weapons
         public override void Fire(Vector3 targetPosition)
         {
             if (_isDelay) return;
-            
             base.Fire(targetPosition);
             SpawnBullet();
         }
