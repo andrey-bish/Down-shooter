@@ -96,71 +96,22 @@ namespace Characters
 
 		private void OnFarZoneEnter(Collider other)
 		{
-			//if (other.transform.TryGetComponent<IDamageable>(out var target)) AddTarget(target);
+			if (other.transform.TryGetComponent<IDamageable>(out var target)) AddTarget(target);
 		}
 
 		private void OnFarZoneExit(Collider other)
 		{
-			//if (other.transform.TryGetComponent<IDamageable>(out var target)) RemoveTarget(target);
+			if (other.transform.TryGetComponent<IDamageable>(out var target)) RemoveTarget(target);
 		}
 
 		protected virtual void AddTarget(IDamageable target)
 		{
-			if (LevelFinished) return;
-			if (IsDead || target.IsDead) return;
-			if (target.Team == Data.Team) return;
-
-			_attackList.Add(target);
-			target.OnDie += RemoveTarget;
-			_animator.DoAttack(true);
-			_movement.Stop();
-			_attackRoutine ??= StartCoroutine(AttackCor());
+			
 		}
 
 		protected virtual void RemoveTarget(IDamageable target)
 		{
-			if (target.Team == Data.Team) return;
-
-			target.OnDie -= RemoveTarget;
-			_attackList.Remove(target);
-			if (_attackList.Count != 0) return;
-			if (IsDead) return;
-			_animator.DoAttack(false);
-
-			StopAttackCor();
-			if (LevelFinished) return;
-			_movement.Resume();
-		}
-
-		private IEnumerator AttackCor()
-		{
-
-			while (true)
-			{
-				yield return null;
-
-				if (LevelFinished) yield break;
-
-				// var position = transform.position;
-				// _target = _attackList[0];
-				// // var hasTarget = nearestTarget != default;
-				// // _lastHasTarget = hasTarget;
-				//
-				// var characterPosition = _target.ModelPosition;
-				//             
-				// if (Time.time < _lastAttack + ShotDelay) continue;
-				// if (Vector3.Dot(transform.forward.XZOnly(),
-				// 	    (characterPosition - transform.position).XZOnly().normalized) < 0.8f)
-				// {
-				// 	continue;
-				// }
-			}
-		}
-
-		private void StopAttackCor()
-		{
-			_attackRoutine.Stop(this);
-			_attackRoutine = null;
+			
 		}
 
 		protected virtual void Fire(Vector3 shotEndPosition)

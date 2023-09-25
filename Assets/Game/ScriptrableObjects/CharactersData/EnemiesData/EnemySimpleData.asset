@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53ae8378388044cca508bbc47899d218, type: 3}
-  m_Name: EnemyData
+  m_Name: EnemySimpleData
   m_EditorClassIdentifier: 
   _team: 2
   _walkSpeed: 2
@@ -26,5 +26,7 @@ MonoBehaviour:
   _regenerationHealth: 0
   _regenerationDelay: 0
   _actionInterval: 0.2
-  _farZoneRadius: 4
+  _farZoneRadius: 2
   _stoppingDistance: 0
+  _attackDelay: 0.5
+  _damage: 10

@@ -17,5 +17,5 @@ MonoBehaviour:
   _bulletType: 1
   _mesh: {fileID: 0}
   _damage: 50
-  _bulletSpeed: 50
+  _bulletSpeed: 35
   _shotDelay: 1.5

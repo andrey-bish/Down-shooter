@@ -1,5 +1,6 @@
 ﻿using System;
 using Characters.FireLogic;
+using Damageable;
 using Extensions;
 using Providers;
 using Unity.VisualScripting;
@@ -39,6 +40,22 @@ namespace Characters.Player
         protected override void Fire(Vector3 shotEndPosition)
         {
             CurrentWeapon.Fire(shotEndPosition);
+        }
+
+        protected override void AddTarget(IDamageable target)
+        {
+            
+        }
+
+        protected override void RemoveTarget(IDamageable target)
+        {
+            
+        }
+
+        public override void TakeDamage(float value)
+        {
+            Debug.Log($"TakeDamage {_health.CurrentHealth} {value}");
+            base.TakeDamage(value);
         }
     }
 }
