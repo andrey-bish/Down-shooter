@@ -11,6 +11,7 @@ namespace Game.ScriptrableObjects.Classes.Weapons
         [SerializeField] private BulletType _bulletType;
         [SerializeField] private Mesh       _mesh;
         [SerializeField] private int      _damage;
+        [SerializeField] private int      _numberOfShots = 1;
         
         [SerializeField] private float _bulletSpeed;
         [SerializeField] private float _shotDelay;
@@ -21,6 +22,7 @@ namespace Game.ScriptrableObjects.Classes.Weapons
         public Mesh Mesh => _mesh;
         public float BulletSpeed => _bulletSpeed;
         public int Damage => _damage;
+        public int NumberOfShots => _numberOfShots;
         public float ShotDelay => _shotDelay;
     }
 }

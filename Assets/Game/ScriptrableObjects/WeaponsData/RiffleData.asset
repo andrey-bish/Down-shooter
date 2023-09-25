@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddcd436771764b94893a0af647d80288, type: 3}
-  m_Name: PistolData
+  m_Name: RiffleData
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 2
   _team: 1
   _bulletType: 1
   _mesh: {fileID: 0}
   _damage: 50
+  _numberOfShots: 3
   _bulletSpeed: 35
   _shotDelay: 0.5

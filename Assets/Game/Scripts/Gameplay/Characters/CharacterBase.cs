@@ -66,7 +66,7 @@ namespace Characters
 
 		private void InitWeapon()
 		{
-			if (_weapons.Count > 0) CurrentWeapon = _weapons[0];
+			if (_weapons.Count > 0) CurrentWeapon = _weapons[1];
 		}
 
 		private void InitMovement()

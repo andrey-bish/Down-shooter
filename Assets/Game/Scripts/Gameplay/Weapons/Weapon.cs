@@ -1,10 +1,12 @@
-﻿using Common.ObjectPool;
+﻿using System.Collections;
+using Common.ObjectPool;
 using Extensions;
 using Game.ScriptrableObjects.Classes.Weapons;
 using Providers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Utils;
 using static Common.Enums;
 
 namespace Weapons
@@ -12,11 +14,14 @@ namespace Weapons
     public class Weapon : MonoBehaviour
     {
         [SerializeField, GroupComponent] private MeshRenderer _meshRenderer;
-        [SerializeField, GroupComponent] private Transform _gunEnd;
+        [SerializeField, GroupComponent] protected Transform _gunEnd;
         [SerializeField, AssetList, OnValueChanged(nameof(UpdateWeapon)), GroupSetting] protected WeaponData _data;
         public WeaponData Data => _data;
 
         protected bool _isBoost;
+        [SerializeField] protected bool _isDelay;
+
+        private Coroutine _shotDelayRoutine;
         
         private void Awake()
         {
@@ -25,18 +30,30 @@ namespace Weapons
 
         public virtual void Fire(Vector3 targetPosition)
         {
-            //targetPosition - 
-            var bulletPosition = _gunEnd.position;
-            var bulletDirection = (bulletPosition - transform.position).normalized;
-            var bullet = Pool.Get(PrefabProvider.GetBulletPrefab(Data.BulletType), bulletPosition);
-            bullet.Init(bulletDirection, Data.BulletSpeed, Data.Damage, Data.Team);
-            //Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.PistolFire), _gunEnd.position)
-                //.With(x => x.transform.rotation = _gunEnd.rotation);
+            //if (_isDelay) return;
+            _isDelay = true;
+            StartCoroutine(ShotDelay());
+        }
+
+        private IEnumerator ShotDelay()
+        {
+            yield return Helper.GetWait(_data.ShotDelay);
+            _isDelay = false;
         }
 
         private void UpdateWeapon()
         {
             //_meshFilter.sharedMesh = _data.Mesh;
+        }
+
+        protected void SpawnBullet()
+        {
+            var bulletPosition = _gunEnd.position;
+            var bulletDirection = (bulletPosition - transform.position).normalized;
+            var bullet = Pool.Get(PrefabProvider.GetBulletPrefab(Data.BulletType), bulletPosition);
+            bullet.Init(bulletDirection, Data.BulletSpeed, Data.Damage, Data.Team);
+            //Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.PistolFire), _gunEnd.position)
+            //.With(x => x.transform.rotation = _gunEnd.rotation);
         }
 
         public virtual void SwitchConstraint(bool value)
