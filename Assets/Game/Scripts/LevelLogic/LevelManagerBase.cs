@@ -7,7 +7,7 @@ namespace LevelLogic
     public abstract class LevelManagerBase : MonoBehaviour
     {
         public event System.Action OnLevelCompleted;
-        public event System.Action OnLevelNotPassed;
+        public event System.Action<int> OnLevelNotPassed;
         public event System.Action OnLevelLoaded;
 
         public Level CurrentLevel { get; protected set; }
@@ -25,7 +25,7 @@ namespace LevelLogic
         protected abstract void IncreaseLevelNumber();
 
         protected void NotifyOnLevelCompleted() => OnLevelCompleted?.Invoke();
-        protected void NotifyOnLevelNotPassed() => OnLevelNotPassed?.Invoke();
+        protected void NotifyOnLevelNotPassed(int value) => OnLevelNotPassed?.Invoke(value);
         protected void NotifyOnLevelLoaded() => OnLevelLoaded?.Invoke();
     }
 }

@@ -15,9 +15,9 @@ TagManager:
   - Enemy
   - Enviroment
   - Ground
-  - 
-  - 
-  - 
+  - Bullet
+  - PlayerInterativeZone
+  - EnemyInterativeZone
   - 
   - 
   - 

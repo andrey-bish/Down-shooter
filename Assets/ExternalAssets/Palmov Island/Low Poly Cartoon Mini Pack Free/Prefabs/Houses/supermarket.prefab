@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3179798667584262720}
   - component: {fileID: 847834806079071882}
   - component: {fileID: 582290196732450564}
-  m_Layer: 0
+  - component: {fileID: 6102807487801569884}
+  m_Layer: 8
   m_Name: supermarket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +103,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.616259, y: 6.834728, z: 6.3454294}
   m_Center: {x: 0.00000023841858, y: 3.417363, z: 0}
+--- !u!114 &6102807487801569884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208338212056041311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed18dea83664789acd9d39c462eaa9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1701226003627664727
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +127,7 @@ GameObject:
   - component: {fileID: 1858569850220289121}
   - component: {fileID: 1852197353674112364}
   - component: {fileID: 2550694634674284177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: supermarket_plants.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +224,7 @@ GameObject:
   - component: {fileID: 7479165743647984889}
   - component: {fileID: 3858687325963421618}
   - component: {fileID: 3013050824303356084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: supermarket_cart_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +321,7 @@ GameObject:
   - component: {fileID: 4580850875980820826}
   - component: {fileID: 4451687620265032152}
   - component: {fileID: 5596012497903888653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: supermarket_bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +418,7 @@ GameObject:
   - component: {fileID: 1141710034695500575}
   - component: {fileID: 5751319588111152555}
   - component: {fileID: 5491403464380624722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: supermarket_cart_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +515,7 @@ GameObject:
   - component: {fileID: 5055337140868159597}
   - component: {fileID: 6144122685657749749}
   - component: {fileID: 3390133324677033408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: supermarket_plants
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Common;
 using Common.ObjectPool;
 using Game.Scripts.UI;
 using UnityEngine;
@@ -19,6 +16,12 @@ namespace LevelLogic
             _levelManager.OnLevelCompleted += LevelManager_OnLevelCompleted;
             _levelManager.OnLevelNotPassed += LevelManager_OnLevelNotPassed;
             
+            _sceneUI.Init(_levelManager);
+            //_sceneUI.OnTapToPlayClicked += StartLevel;
+            _sceneUI.OnRestartInGameClicked += RestartGameInGame;
+            _sceneUI.OnContinueClicked += NextLevel;
+            _sceneUI.OnRestartOnLoseClicked += RestartGameFailedScreen;
+            
             LoadLevel();
         }
         
@@ -30,6 +33,7 @@ namespace LevelLogic
         private void NextLevel()
         {
             Pool.ReleaseAll();
+            LoadLevel();
         }
         
         private void RestartGame(bool gameScreen)
@@ -61,7 +65,7 @@ namespace LevelLogic
             
         }
 
-        private void LevelManager_OnLevelNotPassed()
+        private void LevelManager_OnLevelNotPassed(int value)
         {
             
         }

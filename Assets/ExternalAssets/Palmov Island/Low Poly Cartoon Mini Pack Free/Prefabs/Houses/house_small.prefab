@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3661868792298731236}
   - component: {fileID: 6214319691421461200}
   - component: {fileID: 1033937731523780310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: house_small_1_potted_tree_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7403309725594552996}
   - component: {fileID: 1044739835987150282}
   - component: {fileID: 7715772860297450049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: house_small_1_potted_tree_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,9 @@ GameObject:
   - component: {fileID: 8050649239332228722}
   - component: {fileID: 6347398445093192151}
   - component: {fileID: 9219583156656895261}
-  m_Layer: 0
+  - component: {fileID: 8307902475796488656}
+  - component: {fileID: 1434870235076345826}
+  m_Layer: 8
   m_Name: house_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +254,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8307902475796488656
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274006608661370056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.3989944, y: 4.7461233, z: 5.3482265}
+  m_Center: {x: 0.00000047683716, y: 2.3730617, z: 0.02472508}
+--- !u!114 &1434870235076345826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274006608661370056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed18dea83664789acd9d39c462eaa9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8128244753601477530
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +291,7 @@ GameObject:
   - component: {fileID: 5341958338502878244}
   - component: {fileID: 3649510070169040527}
   - component: {fileID: 5072633634935814868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: house_small_1_fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}

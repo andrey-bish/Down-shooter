@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Extensions;
+﻿using Extensions;
 using Game.ScriptrableObjects.Classes;
 using UI.ProgressBars;
 using UnityEngine;
@@ -18,5 +17,7 @@ namespace Gameplay
         }
 
         public void UpgradeProgress(int currentPoint) => _levelProgressBar.SetValue(currentPoint);
+
+        public void HideProgressBar() => _levelProgressBar.Hide(0.25f);
     }
 }

@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 848827874740200978, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 848827874740200981, guid: 055111612e1334b48959ea321d61256d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -329,6 +333,22 @@ PrefabInstance:
     - target: {fileID: 848827874740200981, guid: 055111612e1334b48959ea321d61256d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.r
+      value: 0.08926821
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021835005641807309, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 055111612e1334b48959ea321d61256d, type: 3}

@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,12 +28,12 @@ namespace UI.Inventory
         {
             _sequenceRotation.Kill();
             _sequenceRotation = DOTween.Sequence();
-            _sequenceRotation.ShakeRotation(_lockImage.transform);
+            _sequenceRotation.ShakeRotation(_lockImage.transform, 18.0f);
         }
 
         public void OpenCell()
         {
-            _lockImage.transform.DOScale(1.25f, 0.15f).OnComplete(()=>_lockImage.transform.DOScale(0.0f, 0.15f));
+            _lockImage.transform.DOScale(1.25f, 0.25f).OnComplete(()=>_lockImage.transform.DOScale(0.0f, 0.25f));
         }
 
         public void Select()

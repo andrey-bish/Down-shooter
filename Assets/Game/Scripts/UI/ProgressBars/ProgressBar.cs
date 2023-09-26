@@ -44,7 +44,7 @@ namespace UI.ProgressBars
 		{
 			SetColor();
 			_fill.fillAmount = 0;
-			if (_progress != default) _progress.text = "";
+			if (_progress != default) _progress.text = "Score: 0";
 
 			InitWidth();
 		}
@@ -119,7 +119,7 @@ namespace UI.ProgressBars
 			else
 				_fill.DOFillAmount(percent, _fillDuration);
 
-			if (_progress != default) _progress.text = percent <= 0 ? "" : $"{(int) (percent * 100)}%";
+			if (_progress != default) _progress.text = percent <= 0 ? "Score: 0" : $"Score: {_currentValue}";
 
 			if (!_hideIdle && _hideEmpty) Switch(percent > 0);
 			if (!_hideIdle) return;

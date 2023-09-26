@@ -3,7 +3,7 @@ using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.UI.Buttons
+namespace UI.Buttons
 {
     [RequireComponent(typeof(Button), typeof(Image))]
     public class MyButton : MonoBehaviour

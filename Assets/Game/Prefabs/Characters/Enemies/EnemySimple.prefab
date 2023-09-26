@@ -130,6 +130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySimple
       objectReference: {fileID: 0}
+    - target: {fileID: 848827874740200978, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 848827874740200981, guid: 055111612e1334b48959ea321d61256d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -181,6 +185,22 @@ PrefabInstance:
     - target: {fileID: 1915932421583181286, guid: 055111612e1334b48959ea321d61256d, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264304206254564452, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: _fillColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021835005641807309, guid: 055111612e1334b48959ea321d61256d, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8435976053588275847, guid: 055111612e1334b48959ea321d61256d, type: 3}
       propertyPath: m_Enabled

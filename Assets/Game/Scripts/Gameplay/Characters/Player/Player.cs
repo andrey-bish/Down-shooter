@@ -63,6 +63,7 @@ namespace Characters.Player
 
         public void SelectWeapon(int value)
         {
+            CurrentWeapon.StopDelay();
             CurrentWeapon.Deactivate();
             _weapons[value].Activate();
             CurrentWeapon = _weapons[value];

@@ -7,7 +7,7 @@ namespace Gameplay
     {
         public event Action OnLevelLoaded;
         public event Action OnLevelCompleted;
-        public event Action OnLevelLosing;
+        public event Action<int> OnLevelLosing;
 
         [SerializeField] private LevelController _levelController;
 
@@ -18,15 +18,11 @@ namespace Gameplay
             LevelStarted = true;
         }
 		
-        public void StopGameProcess()
-        {
-            LevelStarted = false;
-        }
-
         private void Start()
         {
             OnLevelLoaded?.Invoke();
             _levelController.OnNextLocation += WinLevel;
+            _levelController.OnLoseLocation += LoseLevel;
         }
 
         private void WinLevel()
@@ -35,15 +31,16 @@ namespace Gameplay
             OnLevelCompleted?.Invoke();
         }
 
-        public void LoseLevel()
+        private void LoseLevel()
         {
             LevelStarted = false;
-            OnLevelLosing?.Invoke();
+            OnLevelLosing?.Invoke(_levelController.GetOpenWeapons());
         }
 
         private void OnDisable()
         {
             _levelController.OnNextLocation -= WinLevel;
+            _levelController.OnLoseLocation -= LoseLevel;
         }
 
 #if UNITY_EDITOR

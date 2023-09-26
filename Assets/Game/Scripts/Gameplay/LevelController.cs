@@ -5,7 +5,6 @@ using Characters.Player;
 using Damageable;
 using Extensions;
 using Game.ScriptrableObjects.Classes;
-using UI.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ namespace Gameplay
     public class LevelController : MonoBehaviour
     {
         public event Action OnNextLocation;
+        public event Action OnLoseLocation;
 
         [SerializeField, GroupComponent] private Player _player;
         [SerializeField, GroupComponent] private EnemyController _enemyController;
@@ -44,9 +44,8 @@ namespace Gameplay
         
         private void PlayerDie(IDamageable player)
         {
-            _enemyController.StopGame(); 
-            _player.StopGame();
-            _weaponInventory.StopGame();
+            StopGame();
+            OnLoseLocation?.Invoke();
         }
         
         private void UpgradeProgress(int value)
@@ -58,17 +57,22 @@ namespace Gameplay
                 _count++;
                 if (_count >= AwardPoints.Count)
                 {
-                    Debug.Log($"Win LEVEL");
                     OnNextLocation?.Invoke();
-                    _enemyController.StopGame();
-                    _player.StopGame();
-                    _weaponInventory.StopGame();
+                    StopGame();
                     return;
                 }
-                //открыть оружие
-                Debug.Log($"Open new weapon");
                 _weaponInventory.OpenWeapon(_count);
             }
         }
+
+        private void StopGame()
+        {
+            _enemyController.StopGame();
+            _player.StopGame();
+            _weaponInventory.StopGame();
+            _levelProgress.HideProgressBar();
+        }
+
+        public int GetOpenWeapons() => _weaponInventory.GetOpenWeapons();
     }
 }

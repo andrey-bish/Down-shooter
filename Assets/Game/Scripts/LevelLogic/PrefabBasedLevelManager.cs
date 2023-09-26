@@ -84,12 +84,12 @@ namespace LevelLogic
             NotifyOnLevelLoaded();
         }
         
-        private void CurrentLevel_OnLevelLosing()
+        private void CurrentLevel_OnLevelLosing(int value)
         {
             CurrentLevel.OnLevelCompleted -= CurrentLevel_OnLevelCompleted;
             CurrentLevel.OnLevelLosing -= CurrentLevel_OnLevelLosing;
 
-            NotifyOnLevelNotPassed();
+            NotifyOnLevelNotPassed(value);
         }
 
         private void CurrentLevel_OnLevelCompleted()

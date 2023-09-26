@@ -49,6 +49,7 @@ namespace Gameplay
         public void StopGame()
         {
             _isGameStarted = false;
+            _weaponInventoryUI.Hide();
         }
 
         private void SelectWeapon(int value)
@@ -63,5 +64,7 @@ namespace Gameplay
                 OnSelectWeapon?.Invoke(value);
             }
         }
+
+        public int GetOpenWeapons() => _numberAvailableWeapons;
     }
 }

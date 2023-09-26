@@ -31,12 +31,24 @@ namespace Weapons
         public virtual void Fire(Vector3 targetPosition)
         {
             _isDelay = true;
-            StartCoroutine(ShotDelay());
+            _shotDelayRoutine = StartCoroutine(ShotDelay());
         }
 
         private IEnumerator ShotDelay()
         {
             yield return Helper.GetWait(_data.ShotDelay);
+            _shotDelayRoutine = null;
+            _isDelay = false;
+        }
+
+        public void StopDelay()
+        {
+            if (_shotDelayRoutine != null)
+            {
+                StopCoroutine(_shotDelayRoutine);
+                _shotDelayRoutine = null;
+            }
+
             _isDelay = false;
         }
 
