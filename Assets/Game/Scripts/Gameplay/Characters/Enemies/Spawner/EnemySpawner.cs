@@ -51,6 +51,11 @@ namespace Characters.Enemies.Spawner
             StopRoutine();
             _spawnRoutine = Coroutines.StartRoutine(SpawnEnemies());
         }
+
+        public void StopSpawn()
+        {
+            StopRoutine();
+        }
         
         private void StopRoutine()
         {
@@ -61,11 +66,6 @@ namespace Characters.Enemies.Spawner
             }
         }
         
-        private void StopSpawn(IDamageable _)
-        {
-            StopRoutine();
-        }
-
         private IEnumerator SpawnEnemies()
         {
             yield return new WaitForSeconds(0.25f);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Extensions;
 using Sirenix.OdinInspector;
@@ -7,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.UI.ProgressBars
+namespace UI.ProgressBars
 {
     public class ProgressBar : MonoBehaviour
     {
@@ -17,9 +18,9 @@ namespace Game.Scripts.UI.ProgressBars
 
 		[SerializeField, GroupComponent] private CanvasGroup     _canvasGroup;
 		[SerializeField, GroupComponent] private TextMeshProUGUI _progress;
+		[SerializeField, GroupComponent] private Transform _awardImageParent;
 
 		[SerializeField, GroupSetting] private bool _hideIdle;
-		[SerializeField, GroupSetting] private bool _isTower;
 
 		[SerializeField, GroupSetting, Indent, ShowIf(nameof(_hideIdle))] private float _hideDelay;
 		[SerializeField, GroupSetting, HideIf(nameof(_hideIdle))]         private bool  _hideEmpty;
@@ -149,6 +150,21 @@ namespace Game.Scripts.UI.ProgressBars
 		{
 			_fillTweener.Kill();
 			_showCor.Stop(this);
+		}
+
+		public void SetSprites(List<int> awardPoints, List<Sprite> spritesAward)
+		{
+			for (int i = 0; i < spritesAward.Count; i++)
+			{
+				GameObject newGO = new GameObject(); 
+				Image newImage = newGO.AddComponent<Image>(); 
+				newImage.sprite = spritesAward[i];
+				var rectImage = newGO.GetComponent<RectTransform>();
+				rectImage.SetParent(_awardImageParent);
+				newGO.SetActive(true);
+				var xPos = Mathf.Lerp(-_halfWidth, _halfWidth, awardPoints[i]/_maxValue);
+				rectImage.anchoredPosition = Vector2.right * xPos;
+			}
 		}
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using Extensions;
 using Data.Characters;
 using Characters.Movements;
 using Common.ObjectPool;
@@ -55,7 +53,6 @@ namespace Characters
 		protected virtual void OnEnable() => Subscribe();
 		protected virtual void OnDisable() => Unsubscribe();
 
-
 		#region Init
 		
 		private void InitZones() => _farZone.Init(Data.FarZoneRadius);
@@ -88,8 +85,12 @@ namespace Characters
 
 		#endregion
 
-		public void Move(Vector3 input) => _movement.Move(input);
-		
+		public void Move(Vector3 input)
+		{
+			if (LevelFinished) return;
+			_movement.Move(input);
+		}
+
 		#region Attack
 
 		private void OnFarZoneEnter(Collider other)

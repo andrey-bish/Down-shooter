@@ -9,7 +9,7 @@ namespace Gameplay
         public event Action OnLevelCompleted;
         public event Action OnLevelLosing;
 
-        //[SerializeField] private LevelController _levelController;
+        [SerializeField] private LevelController _levelController;
 
         public bool LevelStarted { get; set; }
 
@@ -26,7 +26,7 @@ namespace Gameplay
         private void Start()
         {
             OnLevelLoaded?.Invoke();
-            //_levelController.OnNextLocation += WinLevel;
+            _levelController.OnNextLocation += WinLevel;
         }
 
         private void WinLevel()
@@ -43,7 +43,7 @@ namespace Gameplay
 
         private void OnDisable()
         {
-            //_levelController.OnNextLocation -= WinLevel;
+            _levelController.OnNextLocation -= WinLevel;
         }
 
 #if UNITY_EDITOR

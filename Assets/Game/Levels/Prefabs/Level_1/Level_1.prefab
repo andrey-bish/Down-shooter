@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6289113298404280829, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: m_Name
+      value: LevelProgressBar
+      objectReference: {fileID: 0}
     - target: {fileID: 7353668199164227667, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
       propertyPath: m_RootOrder
       value: 0

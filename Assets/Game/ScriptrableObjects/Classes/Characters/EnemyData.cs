@@ -9,8 +9,11 @@ namespace Data.Characters
         
         [SerializeField, Group("Attack")] private float _attackDelay;
         [SerializeField, Group("Attack")] private int _damage;
+        
+        [SerializeField, Group("Points")] private int _pointsForDeath;
 
         public float AttackDelay => _attackDelay;
         public int Damage => _damage;
+        public int PointsForDeath => _pointsForDeath;
     }
 }

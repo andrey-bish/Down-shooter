@@ -10,7 +10,7 @@ namespace Characters.Enemies
 {
     public class EnemyController : MonoBehaviour
     {
-        public event Action OnEnemyDie;
+        public event Action<int> OnEnemyDie;
         
         [SerializeField, GroupComponent] private List<EnemySpawnPoint> _enemySpawnPoints;
         [SerializeField, GroupComponent] private Transform _playerTransform;
@@ -32,6 +32,7 @@ namespace Characters.Enemies
         private void AddedEnemy(EnemyBase enemy)
         {
             enemy.OnDie += DieEnemy;
+            _enemies.Add(enemy);
         }
 
         private void DieEnemy(IDamageable target)
@@ -40,15 +41,19 @@ namespace Characters.Enemies
             
             if (_enemies.Contains(enemy))
             {
-                OnEnemyDie?.Invoke();
+                OnEnemyDie?.Invoke(enemy.PointsForDeath);
                 _enemies.Remove(enemy);
                 enemy.OnDie -= DieEnemy;
             }
-            
-            // if (_enemies.Count == 0)
-            // {
-            //     OnEnemiesEmpty?.Invoke();
-            // }
+        }
+
+        public void StopGame()
+        {
+            _enemySpawner.StopSpawn();
+            foreach (var enemy in _enemies)
+            {
+                enemy.StopMovement();
+            }
         }
     }
 }

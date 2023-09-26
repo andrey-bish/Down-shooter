@@ -18,7 +18,11 @@ namespace Characters.Enemies.Units
         
         private float _lastAttack;
 
+        private bool _isStopGame;
+
         private float AttackDelay => Data.AttackDelay;
+
+        public int PointsForDeath => Data.PointsForDeath;
 
         public void Init(EnemyData enemyData, Transform playerTransform)
         {
@@ -27,24 +31,28 @@ namespace Characters.Enemies.Units
             _movement.Enable();
             _movement.Resume();
             InitHealth();
-            //Move(_playerTransform);
+            _isStopGame = false;
         }
         
         public override void Restart()
         {
             base.Restart();
             StopAttackCor();
+            LevelFinished = false;
         }
 
-        private void Move(Transform moveTarget)
-        {
-            _movement.Move(moveTarget);
-        }
+        private void Move(Transform moveTarget) => _movement.Move(moveTarget);
 
         private void Update()
         {
-            if (_health.IsEmpty) return;
+            if (IsDead || _isStopGame) return;
             Move(_playerTransform);
+        }
+
+        public void StopMovement()
+        {
+            _isStopGame = true;
+            _movement.Disable();
         }
 
         public override void TakeDamage(float value)
@@ -112,19 +120,13 @@ namespace Characters.Enemies.Units
 
                 if (LevelFinished) yield break;
 
-                // var position = transform.position;
-                // _target = _attackList[0];
-                // // var hasTarget = nearestTarget != default;
-                // // _lastHasTarget = hasTarget;
-                //
-                // var characterPosition = _target.ModelPosition;
-                //             
                 if (Time.time < _lastAttack + AttackDelay) continue;
                 if (Vector3.Dot(transform.forward.XZOnly(),
                 	    (_playerTransform.position - transform.position).XZOnly().normalized) < 0.8f)
                 {
                 	continue;
                 }
+                //TODO сделать через оружие
                 Attack(target);
             }
         }

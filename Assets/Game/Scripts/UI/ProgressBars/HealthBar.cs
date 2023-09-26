@@ -2,7 +2,7 @@
 using Extensions;
 using UnityEngine;
 
-namespace Game.Scripts.UI.ProgressBars
+namespace UI.ProgressBars
 {
     public class HealthBar: ProgressBar
     {

@@ -39,6 +39,7 @@ namespace Characters.Player
 
         protected override void Fire(Vector3 shotEndPosition)
         {
+            if (LevelFinished) return;
             CurrentWeapon.Fire(shotEndPosition);
         }
 
@@ -60,6 +61,15 @@ namespace Characters.Player
             CurrentWeapon = _weapons[_weaponCount];
         }
 
+        public void SelectWeapon(int value)
+        {
+            CurrentWeapon.Deactivate();
+            _weapons[value].Activate();
+            CurrentWeapon = _weapons[value];
+        }
+
+        public void StopGame() => LevelFinished = true;
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.G))
@@ -67,5 +77,7 @@ namespace Characters.Player
                 UpgradeWeapon();
             }
         }
+        
+        
     }
 }
