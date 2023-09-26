@@ -20,3 +20,4 @@ MonoBehaviour:
   _numberOfShots: 3
   _bulletSpeed: 35
   _shotDelay: 0.5
+  _inventorySprite: {fileID: 21300000, guid: 3ce4f1537a6c0134a80aa68750ca3bb6, type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using static Common.Enums;
 
 namespace Game.ScriptrableObjects.Classes.Weapons
@@ -16,6 +17,8 @@ namespace Game.ScriptrableObjects.Classes.Weapons
         [SerializeField] private float _bulletSpeed;
         [SerializeField] private float _shotDelay;
 
+        [SerializeField, PreviewField(100, ObjectFieldAlignment.Left)] private Sprite _inventorySprite;
+
         public WeaponType Type => _type;
         public TeamType Team => _team;
         public BulletType BulletType => _bulletType;
@@ -24,5 +27,6 @@ namespace Game.ScriptrableObjects.Classes.Weapons
         public int Damage => _damage;
         public int NumberOfShots => _numberOfShots;
         public float ShotDelay => _shotDelay;
+        public Sprite InventorySprite => _inventorySprite;
     }
 }

@@ -5,6 +5,7 @@ using Characters.Player;
 using Damageable;
 using Extensions;
 using Game.ScriptrableObjects.Classes;
+using UI.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,11 +13,12 @@ namespace Gameplay
 {
     public class LevelController : MonoBehaviour
     {
-        public event Action OnNextLocation; 
+        public event Action OnNextLocation;
 
         [SerializeField, GroupComponent] private Player _player;
         [SerializeField, GroupComponent] private EnemyController _enemyController;
         [SerializeField, GroupComponent] private LevelProgress _levelProgress;
+        [SerializeField, GroupComponent] private WeaponInventory _weaponInventory;
         
         [SerializeField, AssetList] private LevelSettings _levelSettings;
 
@@ -28,6 +30,7 @@ namespace Gameplay
         private void Start()
         {
             _player.OnDie += PlayerDie;
+            _weaponInventory.OnSelectWeapon += _player.SelectWeapon;
             _enemyController.OnEnemyDie += UpgradeProgress;
             _levelProgress.Init(_levelSettings);
         }
@@ -35,6 +38,7 @@ namespace Gameplay
         private void OnDestroy()
         {
             _player.OnDie -= PlayerDie;
+            _weaponInventory.OnSelectWeapon -= _player.SelectWeapon;
             _enemyController.OnEnemyDie -= UpgradeProgress;
         }
         
@@ -42,6 +46,7 @@ namespace Gameplay
         {
             _enemyController.StopGame(); 
             _player.StopGame();
+            _weaponInventory.StopGame();
         }
         
         private void UpgradeProgress(int value)
@@ -57,10 +62,12 @@ namespace Gameplay
                     OnNextLocation?.Invoke();
                     _enemyController.StopGame();
                     _player.StopGame();
+                    _weaponInventory.StopGame();
                     return;
                 }
                 //открыть оружие
                 Debug.Log($"Open new weapon");
+                _weaponInventory.OpenWeapon(_count);
             }
         }
     }

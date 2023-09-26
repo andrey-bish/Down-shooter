@@ -125,6 +125,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2565628989828437573, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
+      propertyPath: _levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b09dc63c0165ad5419cd2103086c06f7, type: 2}
     - target: {fileID: 3470603979039994597, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.58
@@ -195,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7353668199164227668, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
       propertyPath: m_Name
-      value: Level_1 Variant
+      value: Level_1
       objectReference: {fileID: 0}
     - target: {fileID: 7353668199328132346, guid: 29ce858bd6b56b447bb653b28c73f53e, type: 3}
       propertyPath: m_NavMeshData

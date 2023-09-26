@@ -17,5 +17,7 @@ MonoBehaviour:
   _bulletType: 1
   _mesh: {fileID: 0}
   _damage: 50
+  _numberOfShots: 1
   _bulletSpeed: 35
   _shotDelay: 0.5
+  _inventorySprite: {fileID: 21300000, guid: 971dd12a7880bdf4783c95ce098073e8, type: 3}
