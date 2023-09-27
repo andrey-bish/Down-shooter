@@ -1061,6 +1061,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelProgressBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5505524625980050627, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: m_Color.a
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505524625980050627, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.34349412
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505524625980050627, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6586224
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505524625980050627, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386435981349963613, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: _fillColor.a
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375534815856431582, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
+      propertyPath: m_Color.a
+      value: 0.627451
+      objectReference: {fileID: 0}
     - target: {fileID: 9095678325088612970, guid: 41b9c010a8c48f7489c21f0a5ff0e9d2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
