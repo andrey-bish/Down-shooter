@@ -15,7 +15,8 @@
             None = 0,
             Pistol = 1,
             Rifle = 2,
-            Shotgun = 3
+            Shotgun = 3,
+            Hand = 4
         }
         
         public enum BulletType
@@ -42,7 +43,7 @@
         {
             None = 0,
             SimpleEnemy = 1,
-            
+            PistolEnemy = 2
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Characters.Enemies.Units;
 using Common;
 using Common.ObjectPool;
-using Damageable;
 using Extensions;
 using Providers;
 using UnityEngine;
@@ -71,8 +70,6 @@ namespace Characters.Enemies.Spawner
             yield return new WaitForSeconds(0.25f);
             while (true)
             {
-                //Debug.Log($"SPAWN  {_countSpawnUnits} >= {MaxUnitsOnWave} {_countWave} => {_enemiesWave.Count} {_enemiesWave[_countWave].Speed}");
-
                 EnemySpawnPoint spawnPoint = null;
                 spawnPoint = GetSpawnPoint();
                 if (spawnPoint == null) continue;
@@ -84,25 +81,12 @@ namespace Characters.Enemies.Spawner
                 
                 _countSpawner++;
                 
-                var element = PrefabProvider.GetEnemyPrefab(EnemyType.SimpleEnemy);
+                var element = PrefabProvider.GetEnemyPrefab(EnemyType.PistolEnemy);
                 Pool.Get(element.Prefab, spawnPoint.transform.position)
                     .With(x => x.transform.rotation = spawnPoint.transform.rotation)
                     .With(x => x.Init(element.Data, _playerTransform))
                     .With(x => OnAddedEnemy?.Invoke(x));
-                //спавн точка
                 
-                //точка куда идти
-                
-                // if (_countSpawnUnits >= MaxUnitsOnWave)
-                // {
-                //     _countWave++;
-                //     if (_countWave >= _enemiesWave.Count)
-                //     {
-                //         OnEndSpawned?.Invoke();
-                //         yield break;
-                //     }
-                //     _countSpawnUnits = 0;
-                // }
                 yield return Helper.GetWait(_defaultWaitTime);
 
             }

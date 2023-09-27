@@ -126,15 +126,24 @@ namespace Characters.Enemies.Units
                 yield return null;
 
                 if (LevelFinished) yield break;
-
+                _model.DOKill();
+                _model.HorizontalSoftLookAt(target.ModelPosition, 10f);
                 if (Time.time < _lastAttack + AttackDelay) continue;
                 if (Vector3.Dot(transform.forward.XZOnly(),
                 	    (_playerTransform.position - transform.position).XZOnly().normalized) < 0.8f)
                 {
                 	continue;
                 }
-                //TODO сделать через оружие
-                Attack(target);
+
+                if (CurrentWeapon == null)
+                {
+                    Attack(target);
+                }
+                else
+                {
+                    CurrentWeapon.Fire(target.ShotTargetPosition);
+                    _lastAttack = Time.time;
+                }
             }
         }
 

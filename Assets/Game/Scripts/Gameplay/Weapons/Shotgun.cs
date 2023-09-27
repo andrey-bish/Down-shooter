@@ -15,7 +15,7 @@ namespace Weapons
         };
         public override void Fire(Vector3 targetPosition)
         {
-            if (_isDelay) return;
+            if (IsDelay) return;
             base.Fire(targetPosition);
             for (int i = 0; i < _data.NumberOfShots; i++)
             {

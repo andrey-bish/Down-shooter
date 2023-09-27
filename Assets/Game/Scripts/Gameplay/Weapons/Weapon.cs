@@ -17,10 +17,10 @@ namespace Weapons
         [SerializeField, GroupComponent] protected Transform _gunEnd;
         [SerializeField, GroupComponent] protected ParticleSystem _muzzle;
         [SerializeField, AssetList, OnValueChanged(nameof(UpdateWeapon)), GroupSetting] protected WeaponData _data;
-        public WeaponData Data => _data;
+        protected WeaponData Data => _data;
 
-        protected bool _isBoost;
-        [SerializeField] protected bool _isDelay;
+        private bool _isBoost;
+        protected bool IsDelay;
 
         private Coroutine _shotDelayRoutine;
         
@@ -32,7 +32,7 @@ namespace Weapons
 
         public virtual void Fire(Vector3 targetPosition)
         {
-            _isDelay = true;
+            IsDelay = true;
             _shotDelayRoutine = StartCoroutine(ShotDelay());
         }
 
@@ -40,7 +40,7 @@ namespace Weapons
         {
             yield return Helper.GetWait(_data.ShotDelay);
             _shotDelayRoutine = null;
-            _isDelay = false;
+            IsDelay = false;
         }
 
         public void StopDelay()
@@ -51,7 +51,7 @@ namespace Weapons
                 _shotDelayRoutine = null;
             }
 
-            _isDelay = false;
+            IsDelay = false;
         }
 
         private void UpdateWeapon()
