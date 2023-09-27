@@ -23,8 +23,7 @@ namespace Weapons
                 var bulletDirection = (bulletPosition - transform.position).normalized;
                 var bullet = Pool.Get(PrefabProvider.GetBulletPrefab(Data.BulletType), bulletPosition);
                 bullet.Init(bulletDirection, Data.BulletSpeed, Data.Damage, Data.Team);
-                //Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.PistolFire), _gunEnd.position)
-                //.With(x => x.transform.rotation = _gunEnd.rotation);
+                _muzzle.Play();
             }
         }
     }

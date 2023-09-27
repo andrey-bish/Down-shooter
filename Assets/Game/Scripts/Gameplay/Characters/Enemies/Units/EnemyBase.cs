@@ -1,9 +1,13 @@
 ﻿using System.Collections;
+using Common.ObjectPool;
 using Damageable;
 using Data.Characters;
+using DG.Tweening;
 using Extensions;
+using Providers;
 using UnityEngine;
 using Utils;
+using static Common.Enums;
 
 namespace Characters.Enemies.Units
 {
@@ -37,6 +41,7 @@ namespace Characters.Enemies.Units
         public override void Restart()
         {
             base.Restart();
+            transform.localScale = Vector3.one;
             StopAttackCor();
             LevelFinished = false;
         }
@@ -68,6 +73,8 @@ namespace Characters.Enemies.Units
         {
             base.Die();
             StopAttackCor();
+            Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.EnemyDie), transform.position);
+            transform.DOScale(0.0f, 0.25f);
             AfterDie();
         }
         

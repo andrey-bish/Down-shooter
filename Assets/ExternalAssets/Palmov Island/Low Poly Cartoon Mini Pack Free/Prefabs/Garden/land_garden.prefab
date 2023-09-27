@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6444162156131014801}
   - component: {fileID: 9118298442767314011}
   - component: {fileID: 8646517668920331334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: land_garden
   m_TagString: Untagged
   m_Icon: {fileID: 0}

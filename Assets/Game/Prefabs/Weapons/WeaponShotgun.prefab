@@ -138,8 +138,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.5367
       objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692609099863404230, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+--- !u!198 &2418207364548138472 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7287939265893834130, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+  m_PrefabInstance: {fileID: 4948546621837740154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7502891403024186003 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3221018307416011497, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
@@ -159,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 320484820414929184}
   _gunEnd: {fileID: 7744252571902612145}
+  _muzzle: {fileID: 2418207364548138472}
   _data: {fileID: 11400000, guid: 85e0290d2b9df784b9b9f76632c4b960, type: 2}
   _isDelay: 0
 --- !u!4 &7502891403024186004 stripped

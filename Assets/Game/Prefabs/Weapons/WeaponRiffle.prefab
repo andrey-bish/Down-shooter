@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.507
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.281
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.146
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,8 +59,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.6336
       objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692609099863404230, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+--- !u!198 &3704307959471848249 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7287939265893834130, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+  m_PrefabInstance: {fileID: 6218255370457032363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8763571743466044512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3446898867569695435, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
@@ -85,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 5389061686475953918}
   _gunEnd: {fileID: 8763571743466044512}
+  _muzzle: {fileID: 3704307959471848249}
   _data: {fileID: 11400000, guid: d6420f0ec41b8884bb2f289c4ca485c6, type: 2}
   _isDelay: 0
 --- !u!4 &8861101947618202693 stripped

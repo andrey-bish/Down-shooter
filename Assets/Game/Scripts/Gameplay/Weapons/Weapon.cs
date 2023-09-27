@@ -15,6 +15,7 @@ namespace Weapons
     {
         [SerializeField, GroupComponent] private MeshRenderer _meshRenderer;
         [SerializeField, GroupComponent] protected Transform _gunEnd;
+        [SerializeField, GroupComponent] protected ParticleSystem _muzzle;
         [SerializeField, AssetList, OnValueChanged(nameof(UpdateWeapon)), GroupSetting] protected WeaponData _data;
         public WeaponData Data => _data;
 
@@ -26,6 +27,7 @@ namespace Weapons
         private void Awake()
         {
             UpdateWeapon();
+            _muzzle.transform.localPosition = _gunEnd.transform.localPosition;
         }
 
         public virtual void Fire(Vector3 targetPosition)
@@ -63,16 +65,14 @@ namespace Weapons
             var bulletDirection = (bulletPosition - transform.position).normalized;
             var bullet = Pool.Get(PrefabProvider.GetBulletPrefab(Data.BulletType), bulletPosition);
             bullet.Init(bulletDirection, Data.BulletSpeed, Data.Damage, Data.Team);
+            _muzzle.Play();
             //Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.PistolFire), _gunEnd.position)
             //.With(x => x.transform.rotation = _gunEnd.rotation);
-        }
-
-        public virtual void SwitchConstraint(bool value)
-        {
         }
         
         public void SwitchShadow(bool value) => _meshRenderer.shadowCastingMode = value ? ShadowCastingMode.On : ShadowCastingMode.Off;
 
         public void Boosted(bool isBoost) => _isBoost = isBoost;
+        
     }
 }

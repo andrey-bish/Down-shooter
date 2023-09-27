@@ -130,8 +130,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.1809
       objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836499680269725847, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692609099863404230, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692609099863404230, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0688
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692609099863404230, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.131
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+--- !u!198 &2055749686521284266 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7287939265893834130, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
+  m_PrefabInstance: {fileID: 8765283969878055736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6131598396228528593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3221018307416011497, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
@@ -151,7 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 3025253685502251171}
   _gunEnd: {fileID: 6228851111272497651}
+  _muzzle: {fileID: 2055749686521284266}
   _data: {fileID: 11400000, guid: 452a2f6de92492b46b829969cc4f65d5, type: 2}
+  _isDelay: 0
 --- !u!4 &6131598396228528598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3221018307416011502, guid: 35e7c1d24568be94bb1c118d75a4ac54, type: 3}
