@@ -42,6 +42,7 @@ namespace Characters.Enemies.Units
         {
             base.Restart();
             transform.localScale = Vector3.one;
+            ResetModelRotation();
             StopAttackCor();
             LevelFinished = false;
         }
@@ -116,11 +117,12 @@ namespace Characters.Enemies.Units
             StopAttackCor();
             if (LevelFinished) return;
             _movement.Resume();
+            ResetModelRotation();
         }
         
         private IEnumerator AttackCor(IDamageable target)
         {
-
+            ResetModelRotation();
             while (true)
             {
                 yield return null;
@@ -161,5 +163,12 @@ namespace Characters.Enemies.Units
 
         #endregion
         
+        void ResetModelRotation()
+        {
+        	if (_model.localRotation == Quaternion.identity) return;
+        
+        	_model.DOKill();
+        	_model.DOLocalRotate(Vector3.zero, 0.3f);
+        }
     }
 }

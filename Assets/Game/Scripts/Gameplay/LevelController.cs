@@ -37,6 +37,7 @@ namespace Gameplay
         
         private void OnDestroy()
         {
+            _levelSettings.ResetValues();
             _player.OnDie -= PlayerDie;
             _weaponInventory.OnSelectWeapon -= _player.SelectWeapon;
             _enemyController.OnEnemyDie -= UpgradeProgress;
@@ -62,11 +63,14 @@ namespace Gameplay
                     return;
                 }
                 _weaponInventory.OpenWeapon(_count);
+                _enemyController.ChangeEnemySpawnChance();
+                _enemyController.ChangeEnemySpawnTime();
             }
         }
 
         private void StopGame()
         {
+            _levelSettings.ResetValues();
             _enemyController.StopGame();
             _player.StopGame();
             _weaponInventory.StopGame();

@@ -73,6 +73,7 @@ namespace Weapons.Bullets
             {
                 if(_isHit) return;
                 if (target.Team == _team) return;
+                if (target.IsDead) return;
                 target.TakeDamage(_damage);
                 _isHit = true;
                 Release();

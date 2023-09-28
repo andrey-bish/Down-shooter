@@ -17,3 +17,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 751e812f4676b66469703f82a304375e, type: 3}
   - {fileID: 21300000, guid: 457a2dc2fd10c954793fd84c4847baed, type: 3}
   - {fileID: 21300000, guid: 5ae12c1c00e0b5b4b8c7275dfaba560d, type: 3}
+  _enemyTypeSpawn:
+  - _probability: 0.8
+    _enemyType: 1
+  - _probability: 0.2
+    _enemyType: 2
+  _spawnTimeReductionPercentage: 10

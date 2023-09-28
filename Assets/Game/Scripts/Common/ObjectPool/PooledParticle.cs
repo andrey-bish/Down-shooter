@@ -13,23 +13,23 @@ namespace Common.ObjectPool
         public override void Restart()
         {
             base.Restart();
-            if (_playOnAwake) _particle.Play();
+            if (_playOnAwake) Play();
         }
 
         public override void Retain(int id, string containerName)
         {
             base.Retain(id, containerName);
-            if (_playOnAwake) _particle.Play();
+            if (_playOnAwake) Play();
         }
 
         public virtual void SetParticleType(ParticleType particleType)
         {
-            _particle.Play();
+            Play();
         }
 
         public override void Release(bool disableObject = true)
         {
-            _particle.Stop();
+            if(gameObject.activeSelf) Stop();
             base.Release(disableObject);
         }
 

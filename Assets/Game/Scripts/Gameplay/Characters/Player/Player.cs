@@ -69,7 +69,12 @@ namespace Characters.Player
             CurrentWeapon = _weapons[value];
         }
 
-        public void StopGame() => LevelFinished = true;
+        public void StopGame()
+        {
+            _movement.Stop();
+            _movement.Disable();
+            LevelFinished = true;
+        }
 
         private void Update()
         {

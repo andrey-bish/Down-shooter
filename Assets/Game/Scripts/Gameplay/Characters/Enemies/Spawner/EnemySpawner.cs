@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Characters.Enemies.Units;
 using Common;
 using Common.ObjectPool;
 using Extensions;
+using Game.ScriptrableObjects.Classes;
 using Providers;
 using UnityEngine;
 using Utils;
 using static Common.Enums;
+using Random = UnityEngine.Random;
 
 namespace Characters.Enemies.Spawner
 {
@@ -17,6 +20,7 @@ namespace Characters.Enemies.Spawner
         public event Action<EnemyBase> OnAddedEnemy;
         
         private List<EnemySpawnPoint> _enemySpawnPoints;
+        private List<LevelSettings.EnemyTypeSpawnChance> _enemyTypeSpawn = new();
         
         private Coroutine _spawnRoutine;
         private WaitForSeconds _wait;
@@ -25,11 +29,14 @@ namespace Characters.Enemies.Spawner
         private Camera _camera;
         
         private int _countSpawner = 0;
-        private float _defaultWaitTime;
+        private int _spawnTimeReductionPercentage;
+        
+        private float _spawnTime;
+        private float _probabilitySumEnemyTypeSpawn;
         
         private bool _isTurnOffSpawn;
 
-        public EnemySpawner(List<EnemySpawnPoint> enemySpawnPoints, Transform playerTransform, float defaultWaitTime, bool isTurnOffSpawn)
+        public EnemySpawner(List<EnemySpawnPoint> enemySpawnPoints, Transform playerTransform, float startWaitTime, bool isTurnOffSpawn, List<LevelSettings.EnemyTypeSpawnChance> enemyTypeSpawn, int spawnTimeReductionPercentage)
         {
             _camera = CameraProvider.MainCamera;
             
@@ -38,8 +45,12 @@ namespace Characters.Enemies.Spawner
 
             _playerTransform = playerTransform;
 
-            _defaultWaitTime = defaultWaitTime;
+            _spawnTime = startWaitTime;
+            _spawnTimeReductionPercentage = spawnTimeReductionPercentage;
             _isTurnOffSpawn = isTurnOffSpawn;
+
+            _enemyTypeSpawn = enemyTypeSpawn;
+            _probabilitySumEnemyTypeSpawn = _enemyTypeSpawn.Sum(x => x.Probability);
         }
         
         private EnemySpawnPoint GetSpawnPoint() => _enemySpawnPoints[_randomNoRepeat.GetAvailable()];
@@ -81,15 +92,43 @@ namespace Characters.Enemies.Spawner
                 
                 _countSpawner++;
                 
-                var element = PrefabProvider.GetEnemyPrefab(EnemyType.PistolEnemy);
+                var randomEnemyTypeSpawn = GetRandomEnemyTypeSpawnChance();
+
+                var element = PrefabProvider.GetEnemyPrefab(randomEnemyTypeSpawn.EnemyType);
                 Pool.Get(element.Prefab, spawnPoint.transform.position)
                     .With(x => x.transform.rotation = spawnPoint.transform.rotation)
                     .With(x => x.Init(element.Data, _playerTransform))
                     .With(x => OnAddedEnemy?.Invoke(x));
                 
-                yield return Helper.GetWait(_defaultWaitTime);
-
+                yield return Helper.GetWait(_spawnTime);
             }
         }
+        
+        private LevelSettings.EnemyTypeSpawnChance GetRandomEnemyTypeSpawnChance()
+        {
+            var probability = Random.Range(0, _probabilitySumEnemyTypeSpawn);
+
+            for (var i = 0; i < _enemyTypeSpawn.Count; i++)
+            { 
+                probability -= _enemyTypeSpawn[i].Probability;
+                if (probability < 0)
+                {
+                    return _enemyTypeSpawn[i];
+                }
+            }
+            return _enemyTypeSpawn.Last();
+        }
+
+        public void ChangeEnemySpawnChance()
+        {
+            var enemyTypeSpawn = _enemyTypeSpawn.FirstOrDefault(x => x.EnemyType == EnemyType.PistolEnemy);
+            if (enemyTypeSpawn != null)
+            {
+                enemyTypeSpawn.Probability += 0.1f;
+                _probabilitySumEnemyTypeSpawn = _enemyTypeSpawn.Sum(x => x.Probability);
+            }
+        }
+
+        public void ChangeEnemySpawnTime() => _spawnTime -= _spawnTime / _spawnTimeReductionPercentage;
     }
 }
