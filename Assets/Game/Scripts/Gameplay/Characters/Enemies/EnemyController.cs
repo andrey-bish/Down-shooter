@@ -20,16 +20,14 @@ namespace Characters.Enemies
         [SerializeField, GroupSetting] private float _startSpawnTime;
         [SerializeField, GroupSetting] private bool _isTurnOffSpawn;
 
-        [SerializeField, AssetList] private LevelSettings _levelSettings;
-
         private List<EnemyBase> _enemies = new ();
 
         private EnemySpawner _enemySpawner;
 
-        private void Start()
+        public void Init(LevelSettings levelSettings)
         {
-            _levelSettings.SetDefaultValues();
-            _enemySpawner = new EnemySpawner(_enemySpawnPoints, _playerTransform, _startSpawnTime, _isTurnOffSpawn, _levelSettings.EnemyTypeSpawn, _levelSettings.SpawnTimeReductionPercentage);
+            levelSettings.SetDefaultValues();
+            _enemySpawner = new EnemySpawner(_enemySpawnPoints, _playerTransform, _startSpawnTime, _isTurnOffSpawn, levelSettings.EnemyTypeSpawn, levelSettings.SpawnTimeReductionPercentage);
             _enemySpawner.OnAddedEnemy += AddedEnemy;
             _enemySpawner.StartSpawnEnemies();
         }

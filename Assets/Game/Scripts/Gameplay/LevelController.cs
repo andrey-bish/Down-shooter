@@ -5,6 +5,7 @@ using Characters.Player;
 using Damageable;
 using Extensions;
 using Game.ScriptrableObjects.Classes;
+using Gameplay.Objects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Gameplay
         [SerializeField, GroupComponent] private EnemyController _enemyController;
         [SerializeField, GroupComponent] private LevelProgress _levelProgress;
         [SerializeField, GroupComponent] private WeaponInventory _weaponInventory;
+        [SerializeField, GroupComponent] private EffectProvider _effectProvider;
         
         [SerializeField, AssetList] private LevelSettings _levelSettings;
 
@@ -32,12 +34,15 @@ namespace Gameplay
             _player.OnDie += PlayerDie;
             _weaponInventory.OnSelectWeapon += _player.SelectWeapon;
             _enemyController.OnEnemyDie += UpgradeProgress;
+            _enemyController.Init(_levelSettings);
             _levelProgress.Init(_levelSettings);
+            _effectProvider.Init();
         }
         
         private void OnDestroy()
         {
             _levelSettings.ResetValues();
+            _effectProvider.StopGame();
             _player.OnDie -= PlayerDie;
             _weaponInventory.OnSelectWeapon -= _player.SelectWeapon;
             _enemyController.OnEnemyDie -= UpgradeProgress;
@@ -75,6 +80,7 @@ namespace Gameplay
             _player.StopGame();
             _weaponInventory.StopGame();
             _levelProgress.HideProgressBar();
+            _effectProvider.StopGame();
         }
 
         public int GetOpenWeapons() => _weaponInventory.GetOpenWeapons();

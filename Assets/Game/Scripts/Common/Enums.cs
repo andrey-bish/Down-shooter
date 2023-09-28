@@ -36,7 +36,8 @@
             ShotgunFire = 4,
             Explosion = 5,
             Poof = 6,
-            EnemyDie = 7
+            EnemyDie = 7,
+            Healing = 8
         }
         
         public enum EnemyType

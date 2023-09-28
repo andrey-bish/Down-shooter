@@ -4,6 +4,7 @@ using Data.Characters;
 using Characters.Movements;
 using Common.ObjectPool;
 using Damageable;
+using Providers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Weapons;
@@ -158,6 +159,10 @@ namespace Characters
 		}
 
 
-
+		public void Healing(float healthValue)
+		{
+			_health.Increase(healthValue);
+			Pool.Get(PrefabProvider.GetParticlePrefab(ParticleType.Healing), transform.position, transform);
+		}
 	}
 }

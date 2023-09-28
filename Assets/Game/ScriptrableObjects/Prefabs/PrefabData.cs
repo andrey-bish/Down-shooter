@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Weapons.Bullets;
 using static Common.Enums;
-using FilePathAttribute = UnityEditor.FilePathAttribute;
 
 namespace ScriptrableObjects.Prefabs
 {
